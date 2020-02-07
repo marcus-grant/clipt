@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import Navbar from './Navbar';
+import { AppProvider, AppState } from './AppContext';
 import './App.css';
 
 const App = () => {
+  // collate into single default state
+  const appState: AppState = { currentURL: undefined, loggedIn: false };
   return (
     <div className="App">
-      <Navbar title="Navbar"/>
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
+      <AppProvider value={appState}>
+        <Navbar title="Navbar"/>
+      </AppProvider>
     </div>
   );
 }
