@@ -1,43 +1,30 @@
 import * as React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import Toolbar from '@material-ui/core/Toolbar';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+// import IconButton from '@material-ui/core/IconButton';
+// import MenuIcon from '@material-ui/icons/Menu';
+import AddClipContainer from './containers/AddClipContainer';
+import AddClipButton, { AddClipButtonProps } from './components/AddClipButton';
+import AddClipDialog, { AddClipDialogProps } from './components/AddClipDialog';
 
-// TODO: Need to make a side menu with all possible categories
+const renderAddClipButton =
+  (props: AddClipButtonProps) => <AddClipButton {...props}/>;
+const renderAddClipDialog =
+  (props: AddClipDialogProps) => <AddClipDialog {...props}/>;
 
-interface NavbarProps {
-  title: string,
-  // children?: ReactChildren,
-}
-
-
- export default (props: NavbarProps) => {
-   // const [anchorEl, setAnchorEl] =
-   //   React.useState<null | HTMLElement>(null);
-
-  // TODO figure out how to properly type the passed event
-  // const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   setAnchorEl(e.currentTarget);
-  // };
-  //
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  // <IconButton
-  //     aria-controls="fade-menu"
-  //     aria-haspopup="true"
-  //     onClick={handleClick}
-  // >
-
+// TODO: Add Sidebar
+const NavBar: React.FC = () => {
   return (
     <AppBar>
-      <IconButton
-        aria-controls="fade-menu"
-        aria-haspopup="true"
-      >
-        <MenuIcon color="primary"/>
-      </IconButton>
+      <Toolbar>
+        <AddClipContainer
+          renderButton={renderAddClipButton}
+          renderDialog={renderAddClipDialog}
+        />
+      </Toolbar>
     </AppBar>
   );
 };
+
+export default NavBar;
