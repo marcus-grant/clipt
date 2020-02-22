@@ -1,26 +1,30 @@
 import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
-import { withStyles, WithStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 
-const useStyles = (theme: Theme) => ({
-  addClipBtn: {
-    marginRight: theme.spacing(2)
-  }
-})
+const useStyles = makeStyles((theme: Theme) => 
+  createStyles({
+    addClipBtn: {
+      marginRight: theme.spacing(2)
+    }
+  }),
+);
 
-export interface AddClipButtonProps extends WithStyles<typeof useStyles>{
+export interface AddClipButtonProps {
   onClick?(e: React.MouseEvent): void,
   disabled?: boolean
 }
 
 const AddClipButton: React.FC<AddClipButtonProps> =
   (props: AddClipButtonProps) => {
-  const {disabled, onClick, classes} = props;
+  const classes = useStyles();
+  const {disabled, onClick} = props;
+
   return (
     <IconButton
-      aria-label="add" 
+      aria-label="add-clip" 
       disabled={disabled}
       onClick={onClick}
       classes={classes.addClipBtn}
@@ -30,4 +34,4 @@ const AddClipButton: React.FC<AddClipButtonProps> =
   );
 };
 
-export default withStyles(useStyles)(AddClipButton);
+export default AddClipButton;
