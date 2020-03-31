@@ -4,13 +4,11 @@ import IconButton from '@material-ui/core/IconButton';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles((theme: Theme) => 
-  createStyles({
-    addClipBtn: {
-      marginRight: theme.spacing(2)
-    }
-  }),
-);
+const useStyles = makeStyles((theme: Theme) => ({
+  addClipBtn: {
+    marginRight: theme.spacing(2)
+  }
+}));
 
 export interface AddClipButtonProps {
   onClick?(e: React.MouseEvent): void,
